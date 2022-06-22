@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"/>
+
+    <title>Document</title>
+
+</head>
+<body class="columns">
+<div class="column">
+    <form method="POST" action="/get_all">
+        <button class="button is-block is-info is-large is-fullwidth">get all student</button>
+
+    </form>
+    <form method="POST" action="/">
+        Add student
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="text" name="name" placeholder="name" autofocus="">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="text" name="surname" placeholder="surname" autofocus="">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="text" name="age" placeholder="age" autofocus="">
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="text" name="group" placeholder="group" autofocus="">
+            </div>
+        </div>
+        <button class="button is-block is-info is-large is-fullwidth">add student</button>
+
+    </form>
+    <form method="post" action="/get_by_id">
+        Search student
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="text" name="id" placeholder="id" autofocus="">
+            </div>
+        </div>
+        <button class="button is-block is-info is-large is-fullwidth">search student by id </button>
+    </form>
+     <form method="post" action="/get_by_name">
+        Search student
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="text" name="name" placeholder="name" autofocus="">
+            </div>
+        </div>
+        <button class="button is-block is-info is-large is-fullwidth">search student by name</button>
+    </form>
+    <form method="post" action="/delete">
+        Search student
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="text" name="id" placeholder="id" autofocus="">
+            </div>
+        </div>
+        <button class="button is-block is-info is-large is-fullwidth">delete student by id</button>
+    </form>
+</div>
+<div class="column">
+    STUDENTS:
+    {% for student in students %}
+
+    <div class="row my_message" style="border-radius: 0.5em;
+                                    background-color: rgba(255,255,255, 0.2);
+                                    padding: 10px;
+                                    margin: 5px">
+        <strong class=".col-md-4 text-left ">
+            name: {{ student['name'] }}
+            surname: {{ student['surname'] }}
+        </strong>
+        <p class=".col-md-4 text-left">
+            id: {{student['id']}}
+            age: {{ student['age']}}
+            group: {{ student['group']}}
+        </p>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
